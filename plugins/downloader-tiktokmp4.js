@@ -7,14 +7,15 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     if (!res) throw res.message;
     
     let result = `⟐⟞⟚⟝⟮ *Title:* ⟯⟞⟚⟝⟐
-┇⟣⟪ ${res.title} ⟫⟢
+┇⟣⟪ ${res.creator} ⟫⟢
 ▥ ━┉┄┄┈┈ ▢
 
 ┇⟐⟞⟚⟝⟮ *Author* ⟯⟞⟚⟝⟐
 ▥ ━┉┄┄┈┈ ▢
-${res.author}
+${res.creator}
 ◈ ━┉┈┄┈┈ ►`
-    conn.sendButtonVid(m.chat, res.video, result, '_© Created by aldi_', `Audio`, `.gettt ${args[0]}`, m)
+    await conn.sendFile(m.chat,  res.respon.video, 'out.mp4', `*DONE* \n${result}`, m, 0)
+    //conn.sendButtonVid(m.chat, res.video, result, '_© Created by aldi_', `Audio`, `.gettt ${args[0]}`, m)
 }
 handler.help = ['tiktok'].map(v => v + ' <url>')
 handler.tags = ['downloader']
